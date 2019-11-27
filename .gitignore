@@ -1,0 +1,13 @@
+dist/
+build/
+
+package-lock.json
+
+# Visual Studio Code's project specific configuration
+.vscode/
+
+.DS_Store
+node_modules
+
+# Log files
+npm-debug.log*
