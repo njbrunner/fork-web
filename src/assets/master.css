@@ -1,5 +1,6 @@
 .theme {
-    --color-background: #ecfffd;
+    /* --color-background: #ecfffd; */
+    --color-background: #f9f9f9;
     --color-primary: #b9f6ca;
     --color-secondary: #88c399;
 }
