@@ -3,7 +3,7 @@
         <form v-on:submit.prevent>
             <input class="form-control" type="email" placeholder="Email" v-model="email">
             <input class="form-control" type="password" placeholder="Password" v-model="password">
-            <button type="submit" class="btn btn-primary" @click="actionButtonClicked"> {{ actionButtonTitle }}</button>
+            <button type="submit" class="btn btn-outline-primary" @click="actionButtonClicked"> {{ actionButtonTitle }}</button>
         </form>
     </div>
 </template>
@@ -32,8 +32,10 @@ export default {
 }
 </script>
 <style scoped>
-
+@import '../assets/master.css';
 .user-form {
     max-width: 400px;
 }
+
+
 </style>

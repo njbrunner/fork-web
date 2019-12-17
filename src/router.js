@@ -1,11 +1,11 @@
 import VueRouter from 'vue-router'
-import Login from '@/components/Login.vue'
-import Register from '@/components/Register.vue'
 import Home from '@/components/Home.vue'
 import CreateRecipeForm from '@/components/CreateRecipeForm.vue'
+import LandingPage from '@/components/LandingPage.vue'
 
 let router = new VueRouter({
     mode: 'history',
+    base: 'fork-web',
     routes: [
         {
             path: '/',
@@ -18,12 +18,7 @@ let router = new VueRouter({
         {
             path: '/login',
             name: 'Login',
-            component: Login
-        },
-        {
-            path: '/register',
-            name: 'Register',
-            component: Register
+            component: LandingPage
         },
         {
             path: '/recipe/new',
