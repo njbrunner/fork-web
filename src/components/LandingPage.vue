@@ -8,7 +8,7 @@
             <div v-if="isLogin">
                 <h1 class="form-text">Login</h1>
                 <user-form :actionButtonTitle="'Login'" @action-button-clicked="login"></user-form>
-                <p class="spacing">Not a user? <a style="cursor:pointer" @click="flip">Signup.</a></p>
+                <p class="spacing">Not a user? <a style="cursor:pointer" @click="flip">Sign up.</a></p>
             </div>
             <div v-else>
                 <h1 class="form-text">Signup</h1>
