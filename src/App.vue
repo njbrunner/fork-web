@@ -47,8 +47,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   height: 100vh;
-  /* background: var(--color-background); */
-  background: white;
+  background: var(--color-background);
 }
 .title {
   color: var(--color-secondary);

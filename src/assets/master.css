@@ -1,8 +1,14 @@
-.theme {
+.light-theme {
     /* --color-background: #ecfffd; */
     --color-background: #f9f9f9;
     --color-primary: #b9f6ca;
     --color-secondary: #88c399;
+}
+
+.dark-theme {
+  --color-background: #414141;
+  --color-primary: #b9f6ca;
+  --color-secondary: #88c399;
 }
 
 .form-control {
