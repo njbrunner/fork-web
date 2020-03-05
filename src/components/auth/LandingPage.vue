@@ -35,7 +35,7 @@ export default {
         login(data) {
             this.$store.dispatch('login', data)
             .then(response => {
-                console.log(response.data['Message']);
+                // console.log(response.data['Message']);
                 this.$router.push({name: 'Home'});
             })
             .catch(error => {
@@ -45,7 +45,7 @@ export default {
         signup(data) {
             this.$store.dispatch('register', data)
             .then(response => {
-                console.log(response.data['Message']);
+                // console.log(response.data['Message']);
                 this.$router.push({name: 'Home'});
             })
             .catch(error => {
@@ -58,8 +58,8 @@ export default {
     }
 }
 </script>
-<style>
-@import '../assets/master.css';
+<style scoped>
+@import '../../assets/master.css';
 .vertical-horizontal-center {
     position: fixed;
     top: 50%;

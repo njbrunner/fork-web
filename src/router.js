@@ -1,7 +1,9 @@
-import VueRouter from 'vue-router'
-import Home from '@/components/Home.vue'
-import CreateRecipeForm from '@/components/CreateRecipeForm.vue'
-import LandingPage from '@/components/LandingPage.vue'
+import VueRouter from 'vue-router';
+
+import Home from '@/components/Home.vue';
+import CreateRecipeForm from '@/components/recipeBook/CreateRecipeForm.vue';
+import LandingPage from '@/components/auth/LandingPage.vue';
+import store from './store';
 
 let router = new VueRouter({
     mode: 'history',
@@ -29,30 +31,32 @@ let router = new VueRouter({
             }
         }
     ]
-})
+});
 
 router.beforeEach((to, from, next) => {
     if (to.matched.some(record => record.meta.requiresAuth)) {
-        if (localStorage.getItem('chef_token') == null) {
+        // if (localStorage.getItem('forkToken') == null) {
+        // console.log(store.state.forkToken);
+        if (store.state.user == null) {
             next({
                 path: '/login',
                 params: { nextUrl: to.fullPath }
-            })
+            });
         } else {
             //let user = JSON.parse(localStorage.getItem('bg_user'))
-            next()
+            next();
         }
     } else if (to.matched.some(record => record.meta.guest)) {
-        if (localStorage.getItem('chef_token') == null) {
-            next()
+        if (localStorage.getItem('forkToken') == null) {
+            next();
         } else {
             next({
                 name: 'Home',
-            })
+            });
         }
     } else {
-        next()
+        next();
     }
-})
+});
 
-export default router
+export default router;

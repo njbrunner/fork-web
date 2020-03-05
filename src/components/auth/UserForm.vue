@@ -32,7 +32,7 @@ export default {
 }
 </script>
 <style scoped>
-@import '../assets/master.css';
+@import '../../assets/master.css';
 .user-form {
     max-width: 400px;
 }
