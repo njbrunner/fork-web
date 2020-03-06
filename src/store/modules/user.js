@@ -20,13 +20,13 @@ const actions = {
             method: 'POST'
         })
         .then( response => {
-            console.log(response);
             localStorage.setItem('forkUser', JSON.stringify(response.data.Data));
             commit('updateUser', response.data.Data);
         });
     },
-    fetchUser({ commit }) {
+    fetchUser({ dispatch, commit }) {
         commit('updateUser', JSON.parse(localStorage.getItem('forkUser')));
+        dispatch('fetchTheme');
     },
     updateUser({ dispatch, commit }, data) {
         axios({
@@ -41,10 +41,12 @@ const actions = {
         });
     },
     fetchTheme() {
-        if (state.user.enable_dark_mode) {
-            document.documentElement.className = "dark-theme";
-        } else {
-            document.documentElement.className = "light-theme";
+        if(state.user) {
+            if (state.user.enable_dark_mode) {
+                document.documentElement.className = "dark-theme";
+            } else {
+                document.documentElement.className = "light-theme";
+            }
         }
     },
     logout({ commit }) {
@@ -55,7 +57,6 @@ const actions = {
 
 const mutations = {
     updateUser: (state, userData) => {
-        console.log('updating user');
         state.user = userData;
     },
     updateToken: (state, forkToken) => {

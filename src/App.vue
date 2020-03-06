@@ -35,7 +35,6 @@ export default {
   },
   computed: {
     user() {
-      console.log(this.$store.getters.getUser)
       return this.$store.getters.getUser;
     }
   },
@@ -59,9 +58,8 @@ export default {
       });
     },
   },
-  created() {
+  beforeUpdate() {
     this.$store.dispatch('fetchUser');
-    this.$store.dispatch('fetchTheme');
   }
 }
 </script>
