@@ -1,11 +1,10 @@
 import axios from 'axios';
 
-// var urlBase = 'https://fork.herokuapp.com/';
-var urlBase = 'http://127.0.0.1:8000/';
+var urlBase = 'https://fork.herokuapp.com/';
+// var urlBase = 'http://127.0.0.1:8000/';
 
 const state = {
     user: null,
-    // forkToken: null,
 };
 
 const getters = {
