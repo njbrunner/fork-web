@@ -14,18 +14,46 @@ const getters = {
 
 const actions = {
     login({ commit }, login_data) {
-        axios({
-            url: urlBase + 'auth/login',
-            data: login_data,
-            method: 'POST'
-        })
-        .then( response => {
-            localStorage.setItem('forkUser', JSON.stringify(response.data.Data));
-            commit('updateUser', response.data.Data);
+        return new Promise((resolve, reject) => {
+            axios({
+                url: urlBase + 'auth/login',
+                data: login_data,
+                method: 'POST'
+            })
+            .then( response => {
+                localStorage.setItem('forkUser', JSON.stringify(response.data.Data));
+                commit('updateUser', response.data.Data);
+                resolve(response);
+            })
+            .catch(error => {
+                reject(error);
+            });
+        });
+        
+    },
+    register({ commit }, registration_data) {
+        return new Promise((resolve, reject) => {
+            axios({
+                url: urlBase + 'auth/signup',
+                data: registration_data,
+                method: 'POST'
+            })
+            .then( response => {
+                localStorage.setItem('forkUser', JSON.stringify(response.data.Data));
+                commit('updateUser', response.data.Data);
+                resolve(response);
+            })
+            .catch( error => {
+                reject(error);
+            });
         });
     },
     fetchUser({ dispatch, commit }) {
-        commit('updateUser', JSON.parse(localStorage.getItem('forkUser')));
+        var storedUser = JSON.parse(localStorage.getItem('forkUser'));
+        if (!storedUser) {
+            storedUser = null;
+        }
+        commit('updateUser', storedUser);
         dispatch('fetchTheme');
     },
     updateUser({ dispatch, commit }, data) {

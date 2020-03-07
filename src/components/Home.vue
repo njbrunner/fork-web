@@ -38,7 +38,6 @@ export default {
         // .catch(error => {
         //     console.log(error.response.data)
         // })
-        // this.$store.dispatch('fetchTheme');
     }
 }
 </script>

@@ -28,10 +28,6 @@ export default {
                 'user_id': this.user.id,
                 'enable_dark_mode': this.darkMode
             })
-            // .then(() => {
-            //     console.log('fetching theme');
-            //     this.$store.dispatch('fetchTheme');
-            // });
         }
     }
 }

@@ -35,15 +35,12 @@ let router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
     if (to.matched.some(record => record.meta.requiresAuth)) {
-        // if (localStorage.getItem('forkToken') == null) {
-        // console.log(store.state.forkToken);
-        if (store.state.user == null) {
+        if (store.getters.getUser == null) {
             next({
                 path: '/login',
                 params: { nextUrl: to.fullPath }
             });
         } else {
-            //let user = JSON.parse(localStorage.getItem('bg_user'))
             next();
         }
     } else if (to.matched.some(record => record.meta.guest)) {
