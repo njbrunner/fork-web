@@ -20,7 +20,10 @@ let router = new VueRouter({
         {
             path: '/login',
             name: 'Login',
-            component: LandingPage
+            component: LandingPage,
+            meta: {
+                noToken: true
+            }
         },
         {
             path: '/recipe/new',
@@ -43,8 +46,9 @@ router.beforeEach((to, from, next) => {
         } else {
             next();
         }
-    } else if (to.matched.some(record => record.meta.guest)) {
-        if (localStorage.getItem('forkToken') == null) {
+    } else if (to.matched.some(record => record.meta.noToken)) {
+        store.dispatch('fetchUser');
+        if (store.getters.getUser == null) {
             next();
         } else {
             next({

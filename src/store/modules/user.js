@@ -4,7 +4,7 @@ var urlBase = 'https://fork.herokuapp.com/';
 // var urlBase = 'http://127.0.0.1:8000/';
 
 const state = {
-    user: null,
+    user: null
 };
 
 const getters = {

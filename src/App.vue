@@ -58,9 +58,6 @@ export default {
       });
     },
   },
-  beforeUpdate() {
-    this.$store.dispatch('fetchUser');
-  }
 }
 </script>
 
