@@ -56,15 +56,26 @@ const actions = {
         dispatch('fetchTheme');
     },
     updateUser({ dispatch, commit }, data) {
-        axios({
-            url: urlBase + 'user/' + data.user_id,
-            data: {'enable_dark_mode': data.enable_dark_mode},
-            method: 'PATCH'
-        })
-        .then( response => {
-            localStorage.setItem('forkUser', JSON.stringify(response.data.Data));
-            commit('updateUser', response.data.Data);
-            dispatch('fetchTheme');
+        return new Promise ((resolve, reject) => {
+            axios({
+                url: urlBase + 'user/' + data.user_id,
+                data: {
+                    'enable_dark_mode': data.enable_dark_mode
+                },
+                headers: {
+                    'Authorization': 'Bearer ' + data.auth_token
+                },
+                method: 'PATCH'
+            })
+            .then(response => {
+                localStorage.setItem('forkUser', JSON.stringify(response.data.Data));
+                commit('updateUser', response.data.Data);
+                dispatch('fetchTheme');
+                resolve(response);
+            })
+            .catch(error => {
+                reject(error);
+            });
         });
     },
     fetchTheme() {

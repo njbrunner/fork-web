@@ -10,8 +10,6 @@
 </template>
 
 <script>
-import axios from 'axios';
-
 export default {
     name: "SettingsPanel",
     props: {
@@ -28,6 +26,12 @@ export default {
                 'user_id': this.user.id,
                 'enable_dark_mode': this.darkMode
             })
+            .then((response) => {
+                this.$toasted.show(response.data.Message, {type: 'success'});
+            })
+            .catch((error) => {
+                this.$toasted.show(error.response.data, {type: 'error'});
+            });
         }
     }
 }
