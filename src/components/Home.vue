@@ -17,7 +17,6 @@
 import CreateRecipeForm from './recipeBook/CreateRecipeForm.vue';
 import RecipeListItem from './recipeBook/RecipeListItem.vue';
 import SearchBar from './searchBar.vue';
-import axios from 'axios';
 export default {
     name: 'Home',
     components: {
@@ -25,19 +24,19 @@ export default {
         RecipeListItem,
         SearchBar,
     },
-    data() {
-        return {
-            recipies: []
+    computed: {
+        recipies() {
+            return this.$store.getters.getRecipies;
         }
     },
     created() {
-        // this.$store.dispatch('fetchRecipies')
-        // .then(response => {
-        //     this.recipies = response.data['Data'];
-        // })
-        // .catch(error => {
-        //     console.log(error.response.data)
-        // })
+        this.$store.dispatch('fetchRecipies')
+        .then(response => {
+            this.recipies = response.data['Data'];
+        })
+        .catch(error => {
+            this.$toasted.show(error.response.data, {type: 'error'});
+        })
     }
 }
 </script>
