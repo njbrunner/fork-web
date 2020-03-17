@@ -60,9 +60,8 @@ export default {
                 this.$router.push({name: 'Home'})
             })
             .catch(error => {
-                console.log(error.response.data['Message'])
                 this.$toasted.show(error.response.data['Message'], {type: 'error'})
-            })
+            });
         },
         uploadImage(event) {
             console.log("Image upload");

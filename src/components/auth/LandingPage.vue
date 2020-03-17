@@ -38,6 +38,7 @@ export default {
                 this.$router.push({name: 'Home'});
             })
             .catch(error => {
+                console.log(error);
                 this.$toasted.show(error.response.data['Message'], {type: 'error'})
             });
         },

@@ -7,20 +7,19 @@
             </div>
             <div class="col-md-9">
                 <div class="horizontal-scroll">
-                    <recipe-list-item v-for="recipe in recipies" :recipe="recipe" :key="recipe._id"></recipe-list-item>
+                    <recipe-list-item v-for="recipe in recipies" :recipe="recipe" :key="recipe.id"></recipe-list-item>
                 </div>
             </div>    
         </div>  
     </div>    
 </template>
 <script>
-import CreateRecipeForm from './recipeBook/CreateRecipeForm.vue';
 import RecipeListItem from './recipeBook/RecipeListItem.vue';
 import SearchBar from './searchBar.vue';
+
 export default {
     name: 'Home',
     components: {
-        CreateRecipeForm,
         RecipeListItem,
         SearchBar,
     },
@@ -35,8 +34,8 @@ export default {
             this.recipies = response.data['Data'];
         })
         .catch(error => {
-            this.$toasted.show(error.response.data, {type: 'error'});
-        })
+            this.$toasted.show(error.response.data['Message'], {type: 'error'});
+        });
     }
 }
 </script>

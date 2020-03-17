@@ -1,8 +1,9 @@
 <template>
     <div class="col-md-3 card">
         <div class="card-body">
-            <div class="card-title">{{recipe.name}}</div>
-            <div>{{recipe.description}}</div>
+            <div class="card-title">{{ recipe.name }}</div>
+            <div>{{ recipe.description }}</div>
+            <p>{{ recipe.ingredients.length }}</p>
         </div>
     </div>
 </template>
